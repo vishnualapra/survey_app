@@ -69,7 +69,6 @@ def index(request):
         if sucf == 0:
             f.participant.is_files_downloaded = True
             f.participant.save()
-        download = f.file_details.file.url
         files = models.UserFiles.objects.filter(participant_id=f.participant_id)
         request.session['id'] = f.participant_id
         request.session['name'] = f.participant.full_name

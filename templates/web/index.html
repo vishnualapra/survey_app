@@ -29,6 +29,18 @@
 	
 	<!-- MODERNIZR MENU -->
 	<script src="{% static 'web/modernizr.js.download' %}"></script>
+    <script>
+    function downfun(srcc,id){
+    var form = document.getElementById(id);
+    var base_url = window.location.origin;
+    var dwn = document.getElementById('dwn')
+    dwn.href = base_url + srcc;
+    dwn.click();
+    document.getElementById('dwn').href ="";
+    form.submit();
+    
+}
+</script>
 
 </head>
 
@@ -148,9 +160,9 @@
                                 <td>{{ i.file_details.file_name }}</td>
                                 <td>
                                 {% if i.is_downloaded == False %}
-                                <form method="post">{% csrf_token %}
+                                <form id="{{ i.id }}" method="post">{% csrf_token %}
                                 <input type="text" value="{{ i.id }}" name="fid" hidden>
-                                <button class="button" type="submit" style="background_color:red;">Download / View</button>
+                                <button type="button" class="button" onclick="downfun('{{ i.file_details.file.url }}',{{ i.id }})" style="background_color:red;">Download / View</button>
                                 </form>
                                 {% else %}
                                 <b style="color:green;">&#10004; Downloaded</b>
@@ -243,6 +255,7 @@
 	</div>
 	<!-- /.modal -->
 	<input type='number' id="hidvalue" value={{ sucf }} hidden>
+    <a href="" id="dwn" download hidden> file_name </a>
 	<!-- COMMON SCRIPTS -->
 	<script src="{% static 'web/jquery-3.2.1.min.js.download' %}"></script>
     {% comment %} <script src="{% static 'web/common_scripts.min.js.download' %}"></script>
@@ -253,6 +266,7 @@
 	<!-- Wizard script-->
 	{% comment %} <script src="{% static 'web/func_1.js.download' %}"></script> {% endcomment %}
 <script>
+
 function foo(sel){
     $.cookie(sel.name,sel.value);
     var uemail = document.getElementById('uemail').innerText;
