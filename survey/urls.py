@@ -19,9 +19,11 @@ from master import urls as masterurls
 from web import urls as weburls
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('master/',include(masterurls)),
     path('web/',include(weburls)),
+    path('',views.index),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,24 @@
+python version -Python 3.8.0
+
+database
+------------------------------------
+create a MySql db named 'survey'
+update db details in settings.py if needed
+
+
+Instruction to create superuser
+-------------------------------------
+python manage.py createsuperuser
+
+
+Instruction to clone and Run the cod
+-------------------------------------
+
+open command
+git clone https://github.com/vishnualapra/survey_app.git
+cd survey_app
+pip install -r requirements.txt
+python manage.py runserver - to run the application
+http://127.0.0.1:8000/ - url
+
+
