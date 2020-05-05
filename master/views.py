@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,logout,login
 from django.contrib.auth.decorators import login_required
 from . import models
+import datetime
 
 # Create your views here.
 
@@ -38,9 +39,20 @@ def login_view(request):
 @login_required(login_url="/master/login/")
 def dashboard(request):
     msg = ''
-    
+    files = models.UpFiles.objects.all().count()
+    users = models.Participants.objects.all()
+    diff = datetime.datetime.today() - datetime.timedelta(days=30)
+    difft = datetime.datetime.today() - datetime.timedelta(days=7)
+    difftt = datetime.datetime.today() - datetime.timedelta(days=1)
+    usersmnth = users.filter(created_at__gte=diff).count()
+    usersweek = users.filter(created_at__gte=difft).count()
+    userstoday = users.filter(created_at__gte=difftt).count()
+    sursus = users.filter(is_completed=True).count()
+    surfa = users.filter(is_completed=False).count()
     template = loader.get_template('master/dashboard.html')
-    return HttpResponse(template.render({'msg':msg,'mainp': 'dashboard',},request))
+    return HttpResponse(template.render({'msg':msg,'mainp': 'dashboard','files':files,
+    'usersmnth':usersmnth,'usersweek':usersweek,'userstoday':userstoday,
+    'sursus':sursus,'surfa':surfa},request))
 
 def logout_view(request):
     logout(request)
