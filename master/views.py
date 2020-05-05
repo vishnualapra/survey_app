@@ -38,8 +38,9 @@ def login_view(request):
 @login_required(login_url="/master/login/")
 def dashboard(request):
     msg = ''
+    
     template = loader.get_template('master/dashboard.html')
-    return HttpResponse(template.render({'msg':msg},request))
+    return HttpResponse(template.render({'msg':msg,'mainp': 'dashboard',},request))
 
 def logout_view(request):
     logout(request)
@@ -64,7 +65,7 @@ def files(request):
             msg = "not_dlt"
     files = models.UpFiles.objects.all()
     template = loader.get_template('master/files.html')
-    return HttpResponse(template.render({'msg':msg,'files':files},request))
+    return HttpResponse(template.render({'msg':msg,'files':files,'page':'files'},request))
 
 
 
@@ -73,7 +74,7 @@ def participants(request):
     msg = ''
     files = models.Participants.objects.all()
     template = loader.get_template('master/participants.html')
-    return HttpResponse(template.render({'msg':msg,'files':files},request))
+    return HttpResponse(template.render({'msg':msg,'files':files,'page':'parti'},request))
 
 
 @login_required(login_url="/master/login/")
@@ -83,4 +84,4 @@ def participant(request,id):
     survey = models.SurveyResult.objects.get(participant_id=id)
     files = models.UserFiles.objects.filter(participant_id=id)
     template = loader.get_template('master/participant.html')
-    return HttpResponse(template.render({'msg':msg,'participant':participant,'survey':survey,'files':files},request))
+    return HttpResponse(template.render({'msg':msg,'participant':participant,'survey':survey,'files':files,'page':'parti'},request))

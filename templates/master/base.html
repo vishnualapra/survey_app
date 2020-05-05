@@ -65,209 +65,29 @@
 								</li>
 							</ul>
 						</li>
-						<li class="slide {% if page == "users" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Users</span><i class="angle fa fa-angle-right"></i></a>
+						<li class="slide {% if page == "files" %}is-expanded{% endif %}">
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Files</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="#" class="slide-item {% if page == 'allcat' %}active{% endif %}"  onclick="location.href='/users/';">View/Manage</a>
+									<a href="#" class="slide-item {% if page == 'files' %}active{% endif %}"  onclick="location.href='/master/files/';">View/Manage</a>
 								</li>
 
 
 
 							</ul>
 						</li>
-                    <li class="slide {% if mainp == "categories" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Categories</span><i class="angle fa fa-angle-right"></i></a>
+                    <li class="slide {% if page == "parti" %}is-expanded{% endif %}">
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Participants</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li>
-									<a href="#" class="slide-item {% if page == 'allcat' %}active{% endif %}"  onclick="location.href='/categories/';">All</a>
+									<a href="#" class="slide-item {% if page == 'parti' %}active{% endif %}"  onclick="location.href='/master/participants/';">All</a>
 								</li>
-                            {% for i in category %}
-                                <li>
-									<a href="#" class="slide-item {% if page == i.course_title %}active{% endif %}"  onclick="location.href='/categories/{{ i.id }}';">{{ i.course_title }}</a>
-								</li>
-                            {% endfor %}
-
+                            
 
 							</ul>
 						</li>
 
-					    {% block levels %}{% endblock %}
-							{% block slevels %}{% endblock %}
-							{% block moduless %}{% endblock %}
-							{% block submodule %}{% endblock %}
-
-
-						<li class="slide {% if page == 'affairs' or page == 'addaffairs' %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-folder"></i><span class="side-menu__label">Current Affairs</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-                            <li>
-									<a href="#" onclick="location.href='/add_affair/';" class="slide-item  {% if page == 'addaffairs' %}active{% endif %}">Add New</a>
-								</li>
-								<li>
-									<a href="#" onclick="location.href='/current_affairs/';" class="slide-item  {% if page == 'affairs' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="slide {% if page == 'tips' or page == 'addtips' %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-italic"></i><span class="side-menu__label">Daily Tips</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-                            <li>
-									<a href="#" onclick="location.href='/add_dailytips/';" class="slide-item  {% if page == 'addtips' %}active{% endif %}">Add New</a>
-								</li>
-								<li>
-									<a href="#" onclick="location.href='/daily_tips/';" class="slide-item  {% if page == 'tips' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="slide {% if page == 'quiz' or page == 'addquiz' %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-underline"></i><span class="side-menu__label">Quiz</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/add_quiz/';" class="slide-item {% if page == 'addquiz' %}active{% endif %}">Add New</a>
-								</li>
-                            <li>
-									<a href="#" onclick="location.href='/quiz/';" class="slide-item {% if page == 'quiz' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-
-						<li class="slide {% if mainp == "extra" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Popular Videos</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/extra/';" class="slide-item {% if page == 'extra' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-                    <li class="slide {% if mainp == "online_test" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Online Test</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-                        {% for i in all_test %}
-								<li>
-									<a href="#" onclick="location.href='/online_test/{{ i.level.level.course_category_id }}/{{ i.level.level_id }}/';" class="slide-item {% if page == i.level.level %}active{% endif %}">{{ i.level.level.course_category }}-{{ i.level.level }}</a>
-								</li>
-                        {% endfor %}
-
-							</ul>
-						</li>
-                    <li class="slide {% if mainp == "publications" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Publications</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-                        {% for i in all_pub %}
-								<li>
-									<a href="#" onclick="location.href='/publications/{{ i.level.course_category_id }}/{{ i.level_id }}/';" class="slide-item {% if page == i.level %}active{% endif %}">{{ i.level.course_category }}-{{ i.level }}</a>
-								</li>
-                        {% endfor %}
-
-							</ul>
-						</li>
-                     <li class="slide {% if page == "orders" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Orders</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/orders/course/';" class="slide-item {% if page == 'orders' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="slide {% if page == "failed_orders" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Failed Orders</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/orders/failed/course/';" class="slide-item {% if page == 'failed_orders' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-                    <li class="slide {% if page == "notificaton" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Notifications</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li>
-									<a href="#" class="slide-item {% if page == 'notificaton' %}active{% endif %}"  onclick="location.href='/notifications/';">View/Manage</a>
-								</li>
-
-
-
-							</ul>
-						</li>
-
-                    <li class="slide {% if page == "review" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Reviews</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/reviews/';" class="slide-item {% if page == 'review' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-                        <li class="slide {% if page == "coupon" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Coupons</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/coupons/';" class="slide-item {% if page == 'coupon' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="slide {% if page == "spcoupon" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Special Coupons</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/spcoupons/';" class="slide-item {% if page == 'spcoupon' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-                    <li class="slide {% if page == "gst" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">GST</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/gst/';" class="slide-item {% if page == 'gst' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-                     <li class="slide {% if page == "upload" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Image Uploader</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/upload_image/';" class="slide-item {% if page == 'upload' %}active{% endif %}">upload</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="slide {% if page == "banners" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Banners</span><i class="angle fa fa-angle-right"></i></a>
-						<ul class="slide-menu">
-								<li>
-									<a href="#" onclick="location.href='/banners/';" class="slide-item {% if page == 'banners' %}active{% endif %}">View / Manage</a>
-								</li>
-
-							</ul>
-						</li>
-      <!--              <li class="slide {% if page == "shipping" %}is-expanded{% endif %}">-->
-						<!--	<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Shipping</span><i class="angle fa fa-angle-right"></i></a>-->
-						<!--<ul class="slide-menu">-->
-						<!--		<li>-->
-						<!--			<a href="#" onclick="location.href='/shipping/';" class="slide-item {% if page == 'shipping' %}active{% endif %}">View / Manage</a>-->
-						<!--		</li>-->
-
-						<!--	</ul>-->
-						<!--</li>-->
-                    <li class="slide {% if page == "authors" %}is-expanded{% endif %}">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Authors</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-
-								<li>
-									<a href=#" onclick="location.href='/authors/';" class="slide-item  {% if page == 'authors' %}active{% endif %}">View/Manage</a>
-								</li>
-							</ul>
-						</li>
+					    
 
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-user"></i><span class="side-menu__label">Account</span><i class="angle fa fa-angle-right"></i></a>
